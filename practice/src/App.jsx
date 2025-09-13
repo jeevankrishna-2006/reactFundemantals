@@ -1,67 +1,59 @@
-//import ProductCard from "./ProductCard.jsx"
-//import Profile from "./Profile.jsx"
-import Movie from "./Movie.jsx"
+
+import {useState} from "react"
 import "./App.css"
-//import ProductCard from "./ProductCard.jsx"
-import BlogPost from "./BlogPost.jsx"
-export const App = () => {
+function App()
+{
+  const [count,SetCount]=useState(0)
+  const [email,SetEmail]=useState("")
+  const [password,SetPassword]=useState("")
+  const incree=()=>{
+   SetCount((num)=>num+1)
+  }
+  const decree=()=>{
+   SetCount((num)=>num-1)
+  }
 
-  //const myName = "jk"
-  //const pro = { 
-  //Product: "Book",
-  //price: 236,
-  //isAvailable: true
-  //}
-  //const Product = [
-    //{
-      //ProductName: "Book",
-      //price: 236,
-      //isAvailable: true
-    //},
-    //{
-      //ProductName: "pen",
-      //price: 10,
-      //isAvailable: true
-    //},
-    //{
-      //ProductName: "product3",
-      //price: 236,
-      //isAvailable: false
-    //}
-  //]
-  const posts=[
-    {author:"sai",
-      title:"ALL IS WELL",
-      description:"SAI RAM"
-    },
-    {author:"srinivas",
-      title:"GOOD",
-      description:"SAI RAM"
-    },
-    {author:"atarya",
-      title:"ALL IS WELL",
-      description:"SAI RAM"
-    }
-  ]
-  return (
-    //<>
-      //{Product.map((ele) => (
-       // <ProductCard ProductName={ele.ProductName} price={ele.price} isAvailable={ele.isAvailable} />
-    //))
-    //}
-    //</> 
-    <>
-    <div className="col">
-    //<Movie name="HIT-3" price={200} available={true} img="./hit-3.jpg"/>
-    //<Movie name="MIRAI" price={200} available={true} img="./mirai.jpg"/>
-    //<Movie name="SALAAR" price={300} available={false} img="./salaar.jpg"/>
-    </div>
-    {posts.map((ele,index) => (
-        <BlogPost key={index} author={ele.author} title={ele.title} description={ele.description} />
-    ))
-  }   
+  const handleSubmit = (event) =>
+  {
+    event.presentDefault();
+    alert(`Email: ${email}\n password: ${password}\n you are logged in`)
+  }
+
+const handleChange = (event) =>
+  {
+    console.log(event.target.name)
+    console.log(event.target.value)
+  }
+
+
+  const handleEmail=(event)=>
+  {
+    SetEmail(event.target.value)
+  }
+  const handlepassword=(event)=>
+  {
+    SetPassword(event.target.value)
+  }
   
-        </>
+  return(
+   <div>
+    <p>{count}</p>
+    <button id="btn" onClick={incree}>INCREMENT</button>
+    <button id="btn" onClick={decree}>DECREMENT</button>
+    <br></br>
+    <br></br>
+    <br></br>
+    <form onSubmit={handleSubmit}>
+      <input type="email" name="Email" onChange={handleEmail}/>
+      <input type="password" name="Password" onChange={handlepassword}/>
+      <button>SUBMIT</button>
+    </form>
+   </div>
+  )
+}
+export default App
 
-      );
-};
+//event handling
+//onClick
+//onChange
+//onSubmit

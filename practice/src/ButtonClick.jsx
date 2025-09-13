@@ -1,6 +1,7 @@
 function ButtonClick()
 {
     return(
-        <div id=
+        <div id="click"></div>
     )
 }
+export default ButtonClick
